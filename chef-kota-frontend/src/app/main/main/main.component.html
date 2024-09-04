@@ -1,0 +1,49 @@
+<div class="content" role="main">
+  <!-- Orders and Customer Status Section -->
+  <div class="row mt-4 stats-section">
+    <!-- Total Orders -->
+    <div class="col-md-3">
+      <div class="card orders-card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Total Orders</h5>
+          <p class="card-text">{{ totalOrders }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Served Customers -->
+    <div class="col-md-2">
+      <div class="card served-card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Served Customers</h5>
+          <p class="card-text">{{ servedCustomers }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pending Orders -->
+    <div class="col-md-2">
+      <div class="card pending-card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Pending Orders</h5>
+          <p class="card-text">{{ pendingOrders }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Cash -->
+    <div class="col-md-3">
+      <div class="card cash-card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Total Cash</h5>
+          <p class="card-text">Ksh {{ totalCash }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Topics Table List -->
+  <div class="col-md-12 mt-5">
+    <app-foods-page></app-foods-page>
+  </div>
+</div>

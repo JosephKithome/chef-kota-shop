@@ -1,0 +1,70 @@
+.content {
+    padding: 20px;
+    background-color: #f8f9fa; /* Light gray background for better contrast */
+    border-radius: 10px;
+  }
+  
+  .stats-section {
+    gap: 20px;
+  }
+  
+  .card {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    aspect-ratio: 1 / 1; /* Makes the card a square */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 120px; 
+    height: 120px
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .orders-card {
+    background: linear-gradient(135deg, #4e73df, #224abe);
+    color: #fff;
+  }
+  
+  .served-card {
+    background: linear-gradient(135deg, #1cc88a, #17a673);
+    color: #fff;
+  }
+  
+  .pending-card {
+    background: linear-gradient(135deg, #f6c23e, #e1a600);
+    color: #fff;
+  }
+  
+  .cash-card {
+    background: linear-gradient(135deg, #f77f00, #d62828);
+    color: #fff;
+  }
+  
+  .card-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .shadow-sm {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mt-5 {
+    margin-top: 3rem !important;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  

@@ -1,0 +1,71 @@
+<div class="col-md-12">
+    <div class="form-container">
+      <h2 class="heading">Edit Food Item</h2>
+      <div class="col-md-12 row">
+        <!-- Food Name -->
+        <div class="col-md-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Food Name</mat-label>
+            <input matInput placeholder="Pizza123" [(ngModel)]="food.name">
+          </mat-form-field>
+        </div>
+  
+        <!-- Description -->
+        <div class="col-md-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Description</mat-label>
+            <input matInput placeholder="Western pizza" [(ngModel)]="food.description">
+          </mat-form-field>
+        </div>
+  
+        <!-- Price -->
+        <div class="col-md-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Price</mat-label>
+            <input matInput placeholder="12.99" type="number" [(ngModel)]="food.price">
+          </mat-form-field>
+        </div>
+  
+        <!-- Stock -->
+        <div class="col-md-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Stock</mat-label>
+            <input matInput placeholder="20" type="number" [(ngModel)]="food.stock">
+          </mat-form-field>
+        </div>
+  
+        <!-- Category -->
+        <div class="col-md-6">
+          <mat-form-field appearance="fill" class="example-full-width">
+            <mat-label>Category</mat-label>
+            <mat-select [(ngModel)]="selectedCategory">
+              <mat-option *ngFor="let category of categories" [value]="category">
+                {{category}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+  
+        <!-- Image URL -->
+        <div class="col-md-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Image URL</mat-label>
+            <input matInput placeholder="http://example.com/images/grilled_chicken.jpg" [(ngModel)]="food.imageUrl">
+          </mat-form-field>
+        </div>
+  
+        <!-- Actions -->
+        <div class="col-md-12">
+          <mat-divider></mat-divider>
+          <section>
+            <div class="example-button-row">
+              <button mat-raised-button color="primary" (click)="updateFood()">Save</button>
+              <button mat-raised-button color="warn" (click)="cancel()">Cancel <mat-icon>arrow_back</mat-icon></button>
+            </div>
+          </section>
+          <mat-divider></mat-divider>
+        </div>
+      </div>
+    </div>
+  </div>
+  

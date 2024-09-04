@@ -1,0 +1,43 @@
+<mat-card class="login-card">
+    <mat-card-content>
+      <h1 class="app-name">Chef-Kota Shop</h1>
+      <form>
+        <h2>Log In</h2>
+  
+        <mat-form-field class="full-width-input">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Username" name="username" [(ngModel)]="user.username" required />
+        </mat-form-field>
+  
+        <mat-form-field class="full-width-input">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            name="password"
+            type="password"
+            placeholder="Password"
+            [(ngModel)]="user.password"
+            required
+          />
+          <mat-icon matSuffix>remove_red_eye</mat-icon>
+        </mat-form-field>
+  
+        <div class="actions">
+          <div class="forgot-password">
+            <a routerLink="/forgot-password">Forgot Password?</a>
+          </div>
+          <button class="btn-lg" mat-raised-button color="primary" (click)="signIn()">
+            Login <mat-icon>lock_open</mat-icon>
+          </button>
+        </div>
+  
+        <div class="create-account">
+          <p>Don't have an account? 
+              <a (click)="navigate()">Create Account</a>
+          </p>
+      </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  
+  

@@ -1,0 +1,38 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+  .new-button{
+    padding:  2px;
+    float:  right;
+    margin: 10px;
+    
+  }
+  .right{
+    background: #47B597;
+    color : #fff;
+    margin:  10px;
+  
+  }
+  
+.example-full-width {
+    width: 100%;
+  }
+  
+  .form-container {
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  .example-button-row button {
+    margin-right: 10px;
+  }
+  

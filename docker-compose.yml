@@ -1,0 +1,16 @@
+services:
+  chef-kota-backend:
+    build:
+      context: ./chef-kota-backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+  chef-kota-frontend:
+    build:
+      context: ./chef-kota-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8081:80" 
+    restart: unless-stopped

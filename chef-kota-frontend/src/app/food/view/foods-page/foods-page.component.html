@@ -1,0 +1,50 @@
+<div class="search-container">
+    <mat-form-field appearance="fill" class="search-form-field">
+      <mat-icon matPrefix>search</mat-icon> <!-- Add your desired icon here -->
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search food" #input />
+    </mat-form-field>
+  </div>
+  
+  
+  <div class="food-container">
+    <mat-card class="food-card" *ngFor="let food of dataSource.filteredData">
+      <mat-card-header>
+        <mat-card-title>{{ food.name }}</mat-card-title>
+      </mat-card-header>
+  
+      <mat-card-content>
+        <!-- Short Description initially displayed -->
+        <p *ngIf="!food.showMore">
+          {{ food.description | slice: 0:50 }}...
+          <button mat-button color="accent" (click)="food.showMore = !food.showMore">
+            Show More
+          </button>
+        </p>
+  
+        <!-- Full Description displayed when 'Show More' is clicked -->
+        <p *ngIf="food.showMore">
+          {{ food.description }}
+          <button mat-button color="accent" (click)="food.showMore = !food.showMore">
+            Show Less
+          </button>
+        </p>
+  
+        <p><strong>Price:</strong> ${{ food.price }}</p>
+        <p><strong>Stock:</strong> {{ food.stock }}</p>
+        <p><strong>Updated At:</strong> {{ food.updated_at | date: 'short' }}</p>
+      </mat-card-content>
+  
+      <!-- <mat-card-actions>
+        <button mat-button color="primary" [matMenuTriggerFor]="appMenu">
+          <mat-icon>edit</mat-icon> Edit
+        </button>
+        <mat-menu #appMenu="matMenu">
+          <button [routerLink]="['/edit-food', food.id]" mat-menu-item>Edit</button>
+        </mat-menu>
+      </mat-card-actions> -->
+    </mat-card>
+  </div>
+  
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  

@@ -1,0 +1,35 @@
+mat-card {
+
+    max-width: 500px;
+    margin: 2em auto;
+    text-align: center;
+    margin-top: 10%;
+
+}
+
+mat-form-field {
+
+    display: block;
+
+}
+.btn-lg{
+    font-size: 1.2em;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+  
+    line-height: 40px;
+    margin-right: 0px;
+    float: right;
+}
+
+.Oauth{
+    max-width: 500px;
+    margin: 2em auto;
+    text-align: center;
+    margin-top: 1%;
+}
+.btZize{
+    width: 100%;
+    background-color: black;
+    color: white;
+}

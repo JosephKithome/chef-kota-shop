@@ -1,0 +1,44 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+
+  .food-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+  
+  .food-card {
+    width: 300px;
+    margin-bottom: 16px;
+  }
+  
+  .search-container {
+    display: flex;
+    justify-content: flex-end; 
+    padding: 16px; 
+  }
+  
+  .search-form-field {
+    width: 400px; 
+    border-radius: 4px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    padding: 8px; 
+    display: flex;
+    align-items: center;
+    margin-right: 80px;
+  }
+  
+
+  
+  
