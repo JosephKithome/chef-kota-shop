@@ -30,6 +30,6 @@ Chef-Kota-Manager is a full-stack application tailored for chefs managing a Kota
 
 1. **Clone the repository**:
    ```bash
-   [git clone https://github.com/your-username/chef-kota-manager.git](https://github.com/JosephKithome/chef-kota-shop.git)
+   git clone https://github.com/JosephKithome/chef-kota-shop.git
    cd chef-kota-shop
    
