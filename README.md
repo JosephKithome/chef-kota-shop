@@ -13,8 +13,8 @@ Chef-Kota-Manager is a full-stack application tailored for chefs managing a Kota
 ## Technology Stack
 
 - **Backend**: Go (Golang)
-- **Frontend**: JavaScript framework (React, Angular, or Vue.js)
-- **Database**: Any suitable database (MongoDB, PostgreSQL, MySQL, etc.)
+- **Frontend**: JavaScript framework used (Angular)
+- **Database**: Database used (MongoDB)
 - **Authentication**: JWT (JSON Web Tokens)
 - **Deployment**: Docker & Docker Compose
 
