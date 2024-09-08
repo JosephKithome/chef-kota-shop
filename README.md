@@ -32,4 +32,25 @@ Chef-Kota-Manager is a full-stack application tailored for chefs managing a Kota
    ```bash
    git clone https://github.com/JosephKithome/chef-kota-shop.git
    cd chef-kota-shop
+
+## Application Screenshots
+
+Here are some screenshots of the application:
+
+### Dashboard
+![Dashboard](assets/dash.PNG)
+
+### Login Page
+![Login Page](assets/login.PNG)
+
+### Food Item Management
+![Food Item Management](assets/foods.PNG)
+
+### Add Food Item Management
+![Add Food Item Management](assets/add.PNG)
+
+### Edit Food Item Management
+![Add Food Item Management](assets/edit.PNG)
+
+
    
