@@ -19,6 +19,7 @@ export class LoginComponent {
   usernameFormController = new FormControl('', Validators.required);
   passwordFormController = new FormControl('', Validators.required);
   user: User;
+  hidePassword = true; 
 
   constructor(
     private router: Router,
@@ -77,5 +78,7 @@ export class LoginComponent {
   navigate = ()=>{
     this.router.navigate(['/signUp']);
   }
-
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
+  }
 }

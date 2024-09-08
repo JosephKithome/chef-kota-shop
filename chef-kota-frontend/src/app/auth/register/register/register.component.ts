@@ -14,9 +14,8 @@ import { catchError, of } from 'rxjs';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  usernameFormController = new FormControl('', Validators.required);
-  passwordFormController = new FormControl('', Validators.required);
   user: User;
+  hidePassword = true; 
 
   constructor(
     private router: Router,
@@ -27,52 +26,37 @@ export class RegisterComponent {
     this.user = {} as UserModel;
   }
 
-  register =() => {
+  register = () => {
     this.loadingService.isLoading.next(true);
-
-    try {
-      this.networkService
-        .doPost(Api.register, this.user)
-        .pipe(
-          catchError((error) => {
-            this.toastService.showError(
-              'Error occurred during registration:',
-              error
-            );
-
-            this.loadingService.isLoading.next(false);
-
-            this.toastService.showError(
-              'Registration failed. Please try again.',
-              'Error'
-            );
-            return of(null);
-          })
-        )
-        .subscribe((response) => {
-          if (response !=="User already exists") {
-            console.log('RESPONSE:: ', response);
-            this.loadingService.isLoading.next(false);
-            this.toastService.showSuccess(
-              'Account created successfully',
-              'Success'
-            );
-            this.router.navigate(['/login']);
-          }else{
-            this.loadingService.isLoading.next(false);
-            this.toastService.showSuccess(
-             response,
-              'Error'
-            );
-          }
-        });
-    } catch (error) {
-      this.toastService.showError('Unexpected error:', error as string);
-      this.loadingService.isLoading.next(false);
-      this.toastService.showError(
-        'Unexpected error occurred. Please try again.',
-        'Error'
-      );
-    }
+  
+    this.networkService
+      .doPost(Api.register, this.user)
+      .pipe(
+        catchError((error) => {
+          this.handleError(error);
+          return of(null);
+        })
+      )
+      .subscribe((response) => {
+        console.log("RESPONSE:::", response)
+        this.loadingService.isLoading.next(false);
+  
+        if (response === "User already exists") {
+          this.toastService.showError(response, 'Error');
+        } else if (response) {
+          this.toastService.showSuccess('Account created successfully', 'Success');
+          this.router.navigate(['/login']);
+        }
+      });
+  };
+  
+  private handleError(error: any): void {
+    this.loadingService.isLoading.next(false);
+    this.toastService.showError(`Error occurred during registration: ${error['error']}`, 'Error');
+    console.error('Registration error:', error);
+  }
+  
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
   }
 }

@@ -5,25 +5,25 @@
 <mat-toolbar *ngIf="!isLoginPage">
   <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu">
     <div class="toolbar" role="banner">
-      <button mat-icon-button class="menu-icon" (click)="sidenav.toggle()">
+      <button *ngIf="isHomePage" mat-icon-button class="menu-icon" (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span class="heading">Chef Kota -Shop</span>
+      <span class="heading" *ngIf="isHomePage">Chef Kota -Shop</span>
       <div class="spacer"></div>
     </div>
   </button>
 
-  <span class="toolbar-item-spacer"></span>
+  <span class="toolbar-item-spacer"></span> <span class="username" *ngIf="isHomePage">Welcome back! {{username}}</span>
 
   <button mat-icon-button matTooltip="Notifications">
-    <mat-icon>notifications</mat-icon>
+    <mat-icon *ngIf="isHomePage">notifications</mat-icon>
   </button>
   <button
     mat-icon-button
     matTooltip="My Account"
     [matMenuTriggerFor]="userAccountMenu"
   >
-    <mat-icon>account_circle</mat-icon>
+    <mat-icon *ngIf="isHomePage">account_circle</mat-icon>
   </button>
   <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
     <button mat-menu-item routerLink="#">
@@ -37,7 +37,7 @@
     </button>
     <mat-divider></mat-divider>
     <button mat-menu-item (click)="logout()">
-      <mat-icon>exit_to_app</mat-icon>Logout
+      <mat-icon >exit_to_app</mat-icon>Logout
     </button>
   </mat-menu>
 </mat-toolbar>
@@ -58,7 +58,7 @@
 
       <!-- System Settings Section -->
       <mat-expansion-panel class="mat-elevation-z0">
-        <mat-expansion-panel-header>System Settings</mat-expansion-panel-header>
+        <mat-expansion-panel-header>Foods</mat-expansion-panel-header>
         <mat-nav-list>
           <a mat-list-item routerLink="/food" class="sidenav-item">
             <mat-icon class="sidenav-icon">people</mat-icon>

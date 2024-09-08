@@ -25,14 +25,12 @@ func AuthRouter(router *gin.Engine) {
 
 	// Login route
 	router.POST("/login", func(c *gin.Context) {
-		// Convert gin context to http.ResponseWriter and http.Request for compatibility
 		Login(c.Writer, c.Request)
 	})
 }
 
 var userCollection *mongo.Collection
 
-// Initialize function to set up the MongoDB connection
 func init() {
 	// Establish a connection to the MongoDB database
 	DB = database.ConnectDB() // Ensure that ConnectDB correctly connects and returns the client

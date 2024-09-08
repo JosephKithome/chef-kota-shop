@@ -18,10 +18,15 @@ import (
 
 var userCollection *mongo.Collection = database.Client.Database("kota_shop").Collection("users")
 
-func Register(w http.ResponseWriter, r *http.Request, c *gin.Context) {
+func Register(c *gin.Context) {
 	var user models.User
-	json.NewDecoder(r.Body).Decode(&user)
 
+	if err := c.ShouldBindJSON(&user); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Invalid input"})
+		return
+	}
+
+	// Hash the user's password
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"message": "Failed to hash password"})
@@ -29,7 +34,8 @@ func Register(w http.ResponseWriter, r *http.Request, c *gin.Context) {
 	}
 	user.Password = string(hashedPassword)
 
-	filter := bson.M{"email": user.email}
+	// Check if the user already exists
+	filter := bson.M{"email": user.Email}
 	count, err := userCollection.CountDocuments(context.TODO(), filter)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"message": "Database error"})
@@ -40,16 +46,14 @@ func Register(w http.ResponseWriter, r *http.Request, c *gin.Context) {
 		return
 	}
 
-	// Insert user into the database
+	// Insert the new user into the database
 	_, err = userCollection.InsertOne(context.TODO(), user)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"message": "Error creating user"})
 		return
 	}
 
-	w.WriteHeader(http.StatusCreated)
-
-	json.NewEncoder(w).Encode(map[string]string{"message": "User registered successfully"})
+	c.JSON(http.StatusCreated, gin.H{"message": "User registered successfully"})
 }
 
 func Login(w http.ResponseWriter, r *http.Request, c *gin.Context) {
@@ -65,7 +69,6 @@ func Login(w http.ResponseWriter, r *http.Request, c *gin.Context) {
 		return
 	}
 
-	// Compare passwords
 	err = bcrypt.CompareHashAndPassword([]byte(foundUser.Password), []byte(loginDetails.Password))
 	if err != nil {
 		c.JSON(http.StatusUnauthorized, gin.H{"message": "Invalid username or password"})

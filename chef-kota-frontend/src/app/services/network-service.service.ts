@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable, tap, finalize } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { LoaderService } from 'src/app/loader/loader.service';
+import { jwtDecode } from 'jwt-decode'; 
+import { DecodedToken } from 'src/models/DecodedToken';
 
 @Injectable({
   providedIn: 'root'
@@ -117,5 +119,27 @@ export class NetworkServiceService implements HttpInterceptor {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
     return headers;
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('authToken');
+  }
+
+  getUsernameFromToken(): string | null {
+    const token = this.getToken();
+    if (token) {
+      try {
+        const decoded = jwtDecode<DecodedToken>(token);
+        return decoded.username || null;
+      } catch (error) {
+        console.error('Error decoding token:', error);
+        return null;
+      }
+    }
+    return null;
+  }
+
+  logout(): void {
+    localStorage.removeItem('authToken');
   }
 }
